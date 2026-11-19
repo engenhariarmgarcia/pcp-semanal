@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14181f">
+<meta name="description" content="Planejamento e Controle Semanal de tarefas de obra (PCP): previsto × executado, prioridades e avanço da obra.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>PCP – Planejamento e Controle Semanal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/app.css">
+
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand"><div class="mark">PCP</div><div>Planejamento e Controle Semanal<small>Tarefas por obra · previsto × executado</small></div></div>
+    <div class="status" id="status"><span class="dot"></span><span id="statusTxt">Conectando…</span></div>
+  </div>
+
+  <div class="toolbar" id="toolbar">
+    <div class="field">
+      <label for="selObra">Obra</label>
+      <select id="selObra"></select>
+    </div>
+    <button class="btn" id="btnNovaObra" data-w>+ Nova obra</button>
+    <div class="field">
+      <label for="selPlano">Planejamento (2 semanas)</label>
+      <select id="selPlano"></select>
+    </div>
+    <button class="btn primary" id="btnNovoPlano" data-w>+ Novo planejamento</button>
+    <div class="spacer"></div>
+    <button class="btn dark" id="btnPdf">⎙ Imprimir (PDF A4)</button>
+    <button class="btn" id="btnExport">⤓ Excel</button>
+    <div class="menu-wrap">
+      <button class="btn" id="btnMenu" aria-label="Mais opções">⋯</button>
+      <div class="menu" id="menu">
+        <button id="mRenomear" data-w>Editar obra (nome e término)</button>
+        <hr>
+        <button id="mDrive">Salvar no Google Drive…</button>
+        <hr>
+        <button id="mBackup">Fazer backup (arquivo .json)</button>
+        <button id="mImportar">Importar backup…</button>
+        <hr>
+        <button id="mExcluirPlano" class="danger" data-w>Excluir este planejamento</button>
+        <button id="mExcluirObra" class="danger" data-w>Excluir obra e seus planejamentos</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="banner" id="banner"></div>
+  <main id="main"></main>
+
+  <dialog id="dlg"><form class="dlg" id="dlgForm" method="dialog"></form></dialog>
+  <div class="toast" id="toast"></div>
+  <input type="file" id="inpImportar" accept=".json,application/json" hidden>
+
+<script src="js/export.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
